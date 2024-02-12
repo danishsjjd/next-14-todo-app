@@ -1,0 +1,31 @@
+{
+  "name": "next-14-todo-list",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.13.0",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.40.0",
+    "eslint-config-next": "latest",
+    "postcss": "8.4.23",
+    "tailwindcss": "3.3.2",
+    "@types/node": "20.10.6",
+    "@types/react": "18.2.46",
+    "@types/react-dom": "18.2.18",
+    "next": "latest",
+    "postgres": "^3.4.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.55",
+    "prisma": "^4.13.0"
+  }
+}
