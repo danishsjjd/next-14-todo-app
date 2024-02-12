@@ -9,7 +9,7 @@ export async function createTodo(
 ) {
   const title = data.get("title")?.valueOf()
   if (typeof title !== "string" || title.length === 0 || title === "bad") {
-    revalidatePath("/")
+    revalidatePath("/") // required to optimistic updates
     return { message: "something went wrong!" }
   }
 
@@ -18,8 +18,5 @@ export async function createTodo(
   return { message: "" }
 }
 
-export async function toggleTodo(id: string, complete: boolean) {
-  "use server"
-
-  await prisma.todo.update({ where: { id }, data: { complete } })
-}
+export const toggleTodo = (id: string, complete: boolean) =>
+  prisma.todo.update({ where: { id }, data: { complete } })

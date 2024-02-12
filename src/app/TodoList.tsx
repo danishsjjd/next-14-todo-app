@@ -1,5 +1,4 @@
-"use client"
-import { TodoItem } from "@/components/TodoItem"
+import { TodoItem } from "@/app/TodoItem"
 import { Todo } from "@prisma/client"
 import React from "react"
 
