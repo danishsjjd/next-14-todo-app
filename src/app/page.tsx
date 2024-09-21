@@ -2,7 +2,7 @@ import { prisma } from "@/db"
 import Todos from "./Todos"
 
 export default async function Home() {
-  const todos = await prisma.todo.findMany()
+  const todos = await prisma.todo.findMany({ orderBy: { complete: "asc" } })
 
   return (
     <>

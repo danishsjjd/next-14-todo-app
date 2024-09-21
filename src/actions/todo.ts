@@ -21,5 +21,8 @@ export async function createTodo(todo: Todo, data: FormData) {
   return { message: "" }
 }
 
-export const toggleTodo = (id: string, complete: boolean) =>
-  prisma.todo.update({ where: { id }, data: { complete: !complete } })
+export const toggleTodo = async (id: string, complete: boolean) => {
+  await prisma.todo.update({ where: { id }, data: { complete } })
+  revalidatePath("/")
+  return { message: "" }
+}

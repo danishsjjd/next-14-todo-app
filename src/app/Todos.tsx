@@ -13,8 +13,8 @@ import { toggleTodo } from "@/actions/todo"
 
 type TodoAction = { pending: boolean } & (
   | {
-      type: "toggle"
-      payload: { id: string }
+      type: "set-completed"
+      payload: { id: string; completed: boolean }
     }
   | { type: "add"; payload: Todo }
 )
@@ -32,7 +32,9 @@ const Todos = ({ todos }: { todos: Todo[] }) => {
         return {
           pending: newState.pending,
           todos: state.todos.map((e) =>
-            e.id === newState.payload.id ? { ...e, complete: !e.complete } : e
+            e.id === newState.payload.id
+              ? { ...e, complete: newState.payload.completed }
+              : e
           ),
         }
       }
@@ -93,11 +95,11 @@ const Todos = ({ todos }: { todos: Todo[] }) => {
               toggleTodo={(checked: boolean) => {
                 startTransition(async () => {
                   setOptimisticTodos({
-                    type: "toggle",
-                    payload: { id: todo.id },
+                    type: "set-completed",
+                    payload: { id: todo.id, completed: checked },
                     pending: true,
                   })
-                  await toggleTodo(todo.id, todo.complete)
+                  await toggleTodo(todo.id, checked)
                 })
               }}
               isPending={state.pending}
