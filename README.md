@@ -5,11 +5,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
+```
+
+The, run the postgres server:
+
+```bash
+docker compose up postgres
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
